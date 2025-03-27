@@ -92,7 +92,7 @@ $ npm i @webonweb/vue-connector
         v-for="element in Object.keys(scheme.nodes)"
         v-slot:[`node-${element}`]="{ node }"
       >
-        {{{ node }}}
+        {{ node }}
       </template>
     </SchemeGraph>
   </div>
