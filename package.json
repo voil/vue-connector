@@ -5,13 +5,13 @@
   "description": "This Vue library enables the creation of interactive workflow transitions and visual IVR diagrams. Featuring an intuitive drag-and-drop interface and ready-made components, developers can quickly design and integrate complex business processes and call-routing scenarios into their applications. Its flexibility and ease of configuration make it an ideal solution for implementing dynamic communication systems and workflow automation",
   "author": "webonweb",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/voil/vue-connector",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/voil/vue-connector.git"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/voil/vue-connector/issues"
   },
   "keywords": [
     "vue",
