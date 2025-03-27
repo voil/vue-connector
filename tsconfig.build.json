@@ -4,11 +4,12 @@
   "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "rollup/parseAst": ["../../../node_modules/rollup/dist/parseAst"]
     },
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,

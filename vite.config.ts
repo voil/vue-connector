@@ -1,9 +1,8 @@
+import vue from '@vitejs/plugin-vue';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import GlobPlugin from "vite-plugin-glob";
-
 const projectRootDir = resolve(__dirname)
 
 export default defineConfig({
@@ -27,9 +26,6 @@ export default defineConfig({
     },
   },
   build: {
-    watch: {
-      chokidar: true,
-    },
     lib: {
       name: 'vue-connector',
       fileName: (format, name) => {

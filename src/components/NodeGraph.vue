@@ -5,7 +5,7 @@
     :style="nodePosition"
   >
     <div
-      class="relative rounded border border-slate-300 bg-slate-100 p-2 text-gray-800 dark:bg-slate-500 dark:text-white"
+      class="relative rounded border bg-slate-100 p-2 text-gray-800 dark:bg-slate-500 dark:text-white"
       :class="nodeClass"
       @mousedown.prevent.stop="handleStartMoveElement"
     >
@@ -83,7 +83,7 @@
   const nodeClass = computed(() => ({
     'cursor-grabbing border-[#3b82f6] shadow-md':
       getSelectedElements().includes(id),
-    'cursor-grab border-slate-200 shadow': !getSelectedElements().includes(id),
+    'cursor-grab border-slate-300 shadow': !getSelectedElements().includes(id),
   }));
 
   const shouldShowRemoveButton = computed(() => nodeModel.value.canRemove);

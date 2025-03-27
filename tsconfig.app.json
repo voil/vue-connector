@@ -6,11 +6,12 @@
       "@/*": ["src/*"],
       "@/types/*": ["src/types/*"],
       "@/composables/*": ["src/composables/*"],
-      "@/components/*": ["src/components/*"]
+      "@/components/*": ["src/components/*"],
+      "rollup/parseAst": ["./node_modules/rollup/dist/parseAst"]
     },
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
