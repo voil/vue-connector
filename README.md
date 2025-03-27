@@ -101,4 +101,4 @@ $ npm i @webonweb/vue-connector
 
 ## ⚠️ Vue 2
 
-The library does not work with previous versions of Vue. It uses the latest Vue 2 standards and is based on the Composition API.
+The library does not work with previous versions of Vue. It uses the latest Vue 3 standards and is based on the Composition API.
