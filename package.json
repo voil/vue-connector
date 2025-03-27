@@ -1,7 +1,7 @@
 {
   "name": "@webonweb/vue-connector",
   "type": "module",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "This Vue library enables the creation of interactive workflow transitions and visual IVR diagrams. Featuring an intuitive drag-and-drop interface and ready-made components, developers can quickly design and integrate complex business processes and call-routing scenarios into their applications. Its flexibility and ease of configuration make it an ideal solution for implementing dynamic communication systems and workflow automation",
   "author": "webonweb",
   "license": "MIT",

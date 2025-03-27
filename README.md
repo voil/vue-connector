@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-    <img width="80%" alt="vue-connector" src="https://i.imgur.com/YoyUsbs.png">
+    <img width="80%" alt="vue-connector" src="https://i.imgur.com/bG9D9dL.png">
 </p>
 
 ## ⭐️ Description
