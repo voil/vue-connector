@@ -1,3 +1,23 @@
+<script lang="ts" setup>
+  import { useAttrs } from 'vue';
+
+  import { useFullScreen } from '@/composables/useFullScreen';
+  import { useScale } from '@/composables/useScale';
+  import { TRANSLATIONS } from '@/constants';
+  import { POSITION_TYPES } from '@/types/index';
+
+  import FullScreenClose from '@/components/ui/Icons/FullScreenClose.vue';
+  import FullScreenOpen from '@/components/ui/Icons/FullScreenOpen.vue';
+  import MinusIcon from '@/components/ui/Icons/MinusIcon.vue';
+  import PlusIcon from '@/components/ui/Icons/PlusIcon.vue';
+  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
+
+  const attrs = useAttrs();
+
+  const { toggleFullScreen, isFullScreen } = useFullScreen();
+  const { increaseScale, decreaseScale, getScale } = useScale();
+</script>
+
 <template>
   <div
     class="absolute right-6 top-2 z-50"
@@ -81,23 +101,3 @@
     </InfoTooltip>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { useAttrs } from 'vue';
-
-  import { useFullScreen } from '@/composables/useFullScreen';
-  import { useScale } from '@/composables/useScale';
-  import { TRANSLATIONS } from '@/constants';
-  import { POSITION_TYPES } from '@/types/index';
-
-  import FullScreenClose from '@/components/ui/Icons/FullScreenClose.vue';
-  import FullScreenOpen from '@/components/ui/Icons/FullScreenOpen.vue';
-  import MinusIcon from '@/components/ui/Icons/MinusIcon.vue';
-  import PlusIcon from '@/components/ui/Icons/PlusIcon.vue';
-  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
-
-  const attrs = useAttrs();
-
-  const { toggleFullScreen, isFullScreen } = useFullScreen();
-  const { increaseScale, decreaseScale, getScale } = useScale();
-</script>

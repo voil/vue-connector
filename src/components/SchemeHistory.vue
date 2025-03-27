@@ -1,3 +1,26 @@
+<script lang="ts" setup>
+  import { useSchemaHistory } from '@/composables/useSchemaHistory';
+  import { TRANSLATIONS } from '@/constants';
+  import { POSITION_TYPES } from '@/types/index';
+  import { useAttrs } from 'vue';
+
+  import RendoArrow from '@/components/ui/Icons/RendoArrow.vue';
+  import UndoAll from '@/components/ui/Icons/UndoAll.vue';
+  import UndoArrow from '@/components/ui/Icons/UndoArrow.vue';
+  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
+
+  const attrs = useAttrs();
+
+  const {
+    isUndoAllActive,
+    isRendoActive,
+    isUndoActive,
+    undoSchema,
+    redoSchema,
+    undoAll,
+  } = useSchemaHistory();
+</script>
+
 <template>
   <div
     class="absolute right-16 top-2 z-50 flex items-center"
@@ -74,26 +97,3 @@
     </InfoTooltip>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { useSchemaHistory } from '@/composables/useSchemaHistory';
-  import { TRANSLATIONS } from '@/constants';
-  import { POSITION_TYPES } from '@/types/index';
-  import { useAttrs } from 'vue';
-
-  import RendoArrow from '@/components/ui/Icons/RendoArrow.vue';
-  import UndoAll from '@/components/ui/Icons/UndoAll.vue';
-  import UndoArrow from '@/components/ui/Icons/UndoArrow.vue';
-  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
-
-  const attrs = useAttrs();
-
-  const {
-    isUndoAllActive,
-    isRendoActive,
-    isUndoActive,
-    undoSchema,
-    redoSchema,
-    undoAll,
-  } = useSchemaHistory();
-</script>

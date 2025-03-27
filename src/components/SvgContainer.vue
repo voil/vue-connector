@@ -1,12 +1,3 @@
-<template>
-  <svg
-    class="absolute z-10"
-    :style="svgStyle"
-  >
-    <slot />
-  </svg>
-</template>
-
 <script lang="ts" setup>
   import { useScale } from '@/composables/useScale';
   import { computed } from 'vue';
@@ -21,3 +12,12 @@
     };
   });
 </script>
+
+<template>
+  <svg
+    class="absolute z-10"
+    :style="svgStyle"
+  >
+    <slot />
+  </svg>
+</template>

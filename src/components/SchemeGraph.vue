@@ -1,3 +1,65 @@
+<script lang="ts" setup>
+  import type { ModelRef } from 'vue';
+  import { provide, useTemplateRef } from 'vue';
+
+  import type {
+    ActionsType,
+    NodeGraphType,
+    NodeType,
+    SchemeGraphType,
+  } from '@/types/index';
+  import { ACTIONS_TYPE, NODE_GROUP_TYPE, SIDE_TYPE } from '@/types/index';
+
+  import { useCore } from '@/composables/useCore';
+  import { useLockScheme } from '@/composables/useLockScheme';
+
+  import ActionsButtons from '@/components/ActionsButtons.vue';
+  import ContainerGraph from '@/components/ContainerGraph.vue';
+  import LockScheme from '@/components/LockScheme.vue';
+  import NodeGraph from '@/components/NodeGraph.vue';
+  import NodeMenuChildrenGraph from '@/components/NodeMenuChildrenGraph.vue';
+  import NodeMenuGraph from '@/components/NodeMenuGraph.vue';
+  import NodeMenuGroupGraph from '@/components/NodeMenuGroupGraph.vue';
+  import NodePath from '@/components/NodePath.vue';
+  import SchemeHistory from '@/components/SchemeHistory.vue';
+  import SvgContainer from '@/components/SvgContainer.vue';
+  import ThemeScheme from '@/components/ThemeScheme.vue';
+  import ZoomGraph from '@/components/ZoomGraph.vue';
+
+  const {
+    isScaleActive = true,
+    isMultiSelectActive = true,
+    elements = [],
+    isHistoryActive = true,
+    lockScheme = false,
+    isLockActive = true,
+    actions = [ACTIONS_TYPE.SAVE_SCHEME, ACTIONS_TYPE.SAVE_DRAFT],
+  } = defineProps<{
+    actions?: ActionsType[];
+    lockScheme?: boolean;
+    isLockActive?: boolean;
+    isScaleActive?: boolean;
+    isHistoryActive?: boolean;
+    isMultiSelectActive?: boolean;
+    elements?: NodeType[];
+  }>();
+
+  const { setSchemeGraphReference } = useCore();
+  const { getStateLockScheme, handleChangeStateLockScheme } = useLockScheme();
+  setSchemeGraphReference(useTemplateRef('schemeContainer'));
+
+  const schemeModel = defineModel<SchemeGraphType>('scheme', {
+    required: true,
+  });
+
+  handleChangeStateLockScheme(lockScheme);
+  provide<ModelRef<SchemeGraphType>>('sharedSchemeModel', schemeModel);
+
+  const emit = defineEmits<{
+    (e: 'on:save', type: ActionsType): void;
+  }>();
+</script>
+
 <template>
   <div
     class="absolute h-full w-full overflow-hidden bg-white bg-opacity-100 bg-[url('@/assets/images/background.png')] bg-center bg-repeat dark:bg-slate-800"
@@ -91,65 +153,3 @@
     </NodeMenuGraph>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import type { ModelRef } from 'vue';
-  import { provide, useTemplateRef } from 'vue';
-
-  import type {
-    ActionsType,
-    NodeGraphType,
-    NodeType,
-    SchemeGraphType,
-  } from '@/types/index';
-  import { ACTIONS_TYPE, NODE_GROUP_TYPE, SIDE_TYPE } from '@/types/index';
-
-  import { useCore } from '@/composables/useCore';
-  import { useLockScheme } from '@/composables/useLockScheme';
-
-  import ActionsButtons from '@/components/ActionsButtons.vue';
-  import ContainerGraph from '@/components/ContainerGraph.vue';
-  import LockScheme from '@/components/LockScheme.vue';
-  import NodeGraph from '@/components/NodeGraph.vue';
-  import NodeMenuChildrenGraph from '@/components/NodeMenuChildrenGraph.vue';
-  import NodeMenuGraph from '@/components/NodeMenuGraph.vue';
-  import NodeMenuGroupGraph from '@/components/NodeMenuGroupGraph.vue';
-  import NodePath from '@/components/NodePath.vue';
-  import SchemeHistory from '@/components/SchemeHistory.vue';
-  import SvgContainer from '@/components/SvgContainer.vue';
-  import ThemeScheme from '@/components/ThemeScheme.vue';
-  import ZoomGraph from '@/components/ZoomGraph.vue';
-
-  const {
-    isScaleActive = true,
-    isMultiSelectActive = true,
-    elements = [],
-    isHistoryActive = true,
-    lockScheme = false,
-    isLockActive = true,
-    actions = [ACTIONS_TYPE.SAVE_SCHEME, ACTIONS_TYPE.SAVE_DRAFT],
-  } = defineProps<{
-    actions?: ActionsType[];
-    lockScheme?: boolean;
-    isLockActive?: boolean;
-    isScaleActive?: boolean;
-    isHistoryActive?: boolean;
-    isMultiSelectActive?: boolean;
-    elements?: NodeType[];
-  }>();
-
-  const { setSchemeGraphReference } = useCore();
-  const { getStateLockScheme, handleChangeStateLockScheme } = useLockScheme();
-  setSchemeGraphReference(useTemplateRef('schemeContainer'));
-
-  const schemeModel = defineModel<SchemeGraphType>('scheme', {
-    required: true,
-  });
-
-  handleChangeStateLockScheme(lockScheme);
-  provide<ModelRef<SchemeGraphType>>('sharedSchemeModel', schemeModel);
-
-  const emit = defineEmits<{
-    (e: 'on:save', type: ActionsType): void;
-  }>();
-</script>

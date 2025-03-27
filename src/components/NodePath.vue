@@ -1,89 +1,3 @@
-<template>
-  <defs>
-    <marker
-      id="arrow"
-      markerHeight="6"
-      markerWidth="6"
-      orient="auto"
-      refX="16"
-      refY="5"
-      viewBox="0 0 10 10"
-    >
-      <path
-        :fill="COLORS_PATH.ACTIVE"
-        d="M0,0 L10,5 L0,10"
-      />
-    </marker>
-  </defs>
-
-  <defs>
-    <filter id="glow">
-      <feGaussianBlur
-        in="SourceGraphic"
-        result="blurred"
-        stdDeviation="5"
-      />
-      <feMerge>
-        <feMergeNode in="blurred" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-  </defs>
-
-  <path
-    :d="bezierPath"
-    :opacity="connectionPath.options.opacity"
-    :stroke="connectionPath.options.stroke"
-    :stroke-width="connectionPath.options.strokeWidth"
-    fill="transparent"
-    marker-end="url(#arrow)"
-  />
-
-  <circle
-    class="cursor-pointer"
-    v-if="!isDummy"
-    :cx="connectionPath.elasticState.currentX"
-    :cy="connectionPath.elasticState.currentY - 25"
-    :fill="colorControlElement"
-    @click.prevent.stop="handleFireAction"
-    @mouseout="isHoverControl = false"
-    @mouseover="isHoverControl = true"
-    r="12"
-  />
-
-  <text
-    class="cursor-pointer select-none"
-    v-html="textControlElement"
-    v-if="
-      !isDummy &&
-      (typePath === CONNECTION_TYPE.boolean ||
-        typePath === CONNECTION_TYPE.empty)
-    "
-    :fill="textControlColorElement"
-    :x="connectionPath.elasticState.currentX"
-    :y="connectionPath.elasticState.currentY - 20"
-    @click.prevent.stop="handleFireAction"
-    @mouseout="isHoverControl = false"
-    @mouseover="isHoverControl = true"
-    font-size="11"
-    font-weight="500"
-    text-anchor="middle"
-  />
-
-  <circle
-    :cx="start.x"
-    :cy="start.y"
-    :fill="COLORS_PATH.ACTIVE"
-    r="6"
-  />
-  <circle
-    :cx="end.x"
-    :cy="end.y"
-    :fill="COLORS_PATH.ACTIVE"
-    r="6"
-  />
-</template>
-
 <script lang="ts" setup>
   import { computed, nextTick, onMounted, ref } from 'vue';
 
@@ -241,3 +155,89 @@
     setForceElastic();
   });
 </script>
+
+<template>
+  <defs>
+    <marker
+      id="arrow"
+      markerHeight="6"
+      markerWidth="6"
+      orient="auto"
+      refX="16"
+      refY="5"
+      viewBox="0 0 10 10"
+    >
+      <path
+        :fill="COLORS_PATH.ACTIVE"
+        d="M0,0 L10,5 L0,10"
+      />
+    </marker>
+  </defs>
+
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur
+        in="SourceGraphic"
+        result="blurred"
+        stdDeviation="5"
+      />
+      <feMerge>
+        <feMergeNode in="blurred" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path
+    :d="bezierPath"
+    :opacity="connectionPath.options.opacity"
+    :stroke="connectionPath.options.stroke"
+    :stroke-width="connectionPath.options.strokeWidth"
+    fill="transparent"
+    marker-end="url(#arrow)"
+  />
+
+  <circle
+    class="cursor-pointer"
+    v-if="!isDummy"
+    :cx="connectionPath.elasticState.currentX"
+    :cy="connectionPath.elasticState.currentY - 25"
+    :fill="colorControlElement"
+    @click.prevent.stop="handleFireAction"
+    @mouseout="isHoverControl = false"
+    @mouseover="isHoverControl = true"
+    r="12"
+  />
+
+  <text
+    class="cursor-pointer select-none"
+    v-html="textControlElement"
+    v-if="
+      !isDummy &&
+      (typePath === CONNECTION_TYPE.boolean ||
+        typePath === CONNECTION_TYPE.empty)
+    "
+    :fill="textControlColorElement"
+    :x="connectionPath.elasticState.currentX"
+    :y="connectionPath.elasticState.currentY - 20"
+    @click.prevent.stop="handleFireAction"
+    @mouseout="isHoverControl = false"
+    @mouseover="isHoverControl = true"
+    font-size="11"
+    font-weight="500"
+    text-anchor="middle"
+  />
+
+  <circle
+    :cx="start.x"
+    :cy="start.y"
+    :fill="COLORS_PATH.ACTIVE"
+    r="6"
+  />
+  <circle
+    :cx="end.x"
+    :cy="end.y"
+    :fill="COLORS_PATH.ACTIVE"
+    r="6"
+  />
+</template>

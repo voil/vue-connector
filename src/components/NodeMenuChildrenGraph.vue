@@ -1,32 +1,3 @@
-<template>
-  <button
-    class="flex items-center justify-between rounded border px-3 py-2 text-sm focus:outline-none"
-    :aria-describedby="element.description ? tooltipId : undefined"
-    :class="buttonClasses"
-    :disabled="disabled"
-    @mousedown.prevent.stop="onCreateElement"
-    type="button"
-  >
-    <span class="flex items-center gap-x-1">
-      <span
-        class="h-5 w-5"
-        v-html="safeIcon"
-        v-if="element.icon"
-      ></span>
-      <span>{{ element.label }}</span>
-    </span>
-    <InfoTooltip
-      v-if="element.description"
-      :id="tooltipId"
-    >
-      <HelpIcon class="h-4 w-4" />
-      <template #content>
-        {{ element.description }}
-      </template>
-    </InfoTooltip>
-  </button>
-</template>
-
 <script lang="ts" setup>
   import { useNode } from '@/composables/useNode';
   import type { NodeType } from '@/types/index';
@@ -55,3 +26,32 @@
     }
   };
 </script>
+
+<template>
+  <button
+    class="flex items-center justify-between rounded border px-3 py-2 text-sm focus:outline-none"
+    :aria-describedby="element.description ? tooltipId : undefined"
+    :class="buttonClasses"
+    :disabled="disabled"
+    @mousedown.prevent.stop="onCreateElement"
+    type="button"
+  >
+    <span class="flex items-center gap-x-1">
+      <span
+        class="h-5 w-5"
+        v-html="safeIcon"
+        v-if="element.icon"
+      ></span>
+      <span>{{ element.label }}</span>
+    </span>
+    <InfoTooltip
+      v-if="element.description"
+      :id="tooltipId"
+    >
+      <HelpIcon class="h-4 w-4" />
+      <template #content>
+        {{ element.description }}
+      </template>
+    </InfoTooltip>
+  </button>
+</template>

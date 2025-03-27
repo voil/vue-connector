@@ -1,3 +1,20 @@
+<script lang="ts" setup>
+  import { TRANSLATIONS } from '@/constants';
+  import { ACTIONS_TYPE, type ActionsType } from '@/types';
+  import { useAttrs } from 'vue';
+
+  const attrs = useAttrs();
+
+  const { actions = [ACTIONS_TYPE.SAVE_SCHEME, ACTIONS_TYPE.SAVE_DRAFT] } =
+    defineProps<{
+      actions?: ActionsType[];
+    }>();
+
+  const emit = defineEmits<{
+    (e: 'on:save', type: ActionsType): void;
+  }>();
+</script>
+
 <template>
   <div
     class="absolute right-[11.25rem] top-2 z-50 flex items-center gap-x-2"
@@ -29,20 +46,3 @@
     </button>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { TRANSLATIONS } from '@/constants';
-  import { ACTIONS_TYPE, type ActionsType } from '@/types';
-  import { useAttrs } from 'vue';
-
-  const attrs = useAttrs();
-
-  const { actions = [ACTIONS_TYPE.SAVE_SCHEME, ACTIONS_TYPE.SAVE_DRAFT] } =
-    defineProps<{
-      actions?: ActionsType[];
-    }>();
-
-  const emit = defineEmits<{
-    (e: 'on:save', type: ActionsType): void;
-  }>();
-</script>

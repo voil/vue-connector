@@ -1,18 +1,3 @@
-<template>
-  <div
-    class="absolute z-30 h-full w-full overflow-hidden whitespace-nowrap outline-none"
-    ref="graphContainer"
-  >
-    <div
-      class="absolute origin-top-left"
-      :style="containerStyle"
-    >
-      <NodeDummy v-if="getDummyNode().value" />
-      <slot />
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
   import { computed, useTemplateRef } from 'vue';
 
@@ -48,3 +33,18 @@
     transform: `scale(calc(${getScale()} / 100), calc(${getScale()} / 100))`,
   }));
 </script>
+
+<template>
+  <div
+    class="absolute z-30 h-full w-full overflow-hidden whitespace-nowrap outline-none"
+    ref="graphContainer"
+  >
+    <div
+      class="absolute origin-top-left"
+      :style="containerStyle"
+    >
+      <NodeDummy v-if="getDummyNode().value" />
+      <slot />
+    </div>
+  </div>
+</template>

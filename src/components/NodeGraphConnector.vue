@@ -1,17 +1,3 @@
-<template>
-  <button
-    class="absolute h-3 w-3 rounded-full bg-blue-200 transition-all hover:bg-blue-500"
-    v-if="isConnectorVisible"
-    :aria-label="`connector position ${position}`"
-    :class="positionClassScheme"
-    @mousedown.prevent.stop="handleStartCreatePath"
-    @mouseup.prevent="handleEndCreatePath"
-    ref="nodeConnector"
-  >
-    &nbsp;
-  </button>
-</template>
-
 <script lang="ts" setup>
   import type { PositionElementType, PositionType } from '@/types/index';
   import { POSITION_TYPES } from '@/types/index';
@@ -80,3 +66,17 @@
     }
   };
 </script>
+
+<template>
+  <button
+    class="absolute h-3 w-3 rounded-full bg-blue-200 transition-all hover:bg-blue-500"
+    v-if="isConnectorVisible"
+    :aria-label="`connector position ${position}`"
+    :class="positionClassScheme"
+    @mousedown.prevent.stop="handleStartCreatePath"
+    @mouseup.prevent="handleEndCreatePath"
+    ref="nodeConnector"
+  >
+    &nbsp;
+  </button>
+</template>

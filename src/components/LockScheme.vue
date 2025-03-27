@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+  import { TRANSLATIONS } from '@/constants';
+  import { POSITION_TYPES } from '@/types/index';
+  import { useAttrs } from 'vue';
+
+  import { useLockScheme } from '@/composables/useLockScheme';
+
+  const attrs = useAttrs();
+  const { getStateLockScheme, handleChangeStateLockScheme } = useLockScheme();
+
+  import LockDown from '@/components/ui/Icons/LockDown.vue';
+  import LockUp from '@/components/ui/Icons/LockUp.vue';
+  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
+</script>
+
 <template>
   <div
     class="absolute right-6 top-[152px] z-50"
@@ -43,18 +58,3 @@
     </InfoTooltip>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { TRANSLATIONS } from '@/constants';
-  import { POSITION_TYPES } from '@/types/index';
-  import { useAttrs } from 'vue';
-
-  import { useLockScheme } from '@/composables/useLockScheme';
-
-  const attrs = useAttrs();
-  const { getStateLockScheme, handleChangeStateLockScheme } = useLockScheme();
-
-  import LockDown from '@/components/ui/Icons/LockDown.vue';
-  import LockUp from '@/components/ui/Icons/LockUp.vue';
-  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
-</script>

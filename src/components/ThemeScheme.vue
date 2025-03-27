@@ -1,3 +1,19 @@
+<script lang="ts" setup>
+  import { TRANSLATIONS } from '@/constants';
+  import { THEME_TYPE } from '@/types';
+  import { POSITION_TYPES } from '@/types/index';
+  import { useAttrs } from 'vue';
+
+  import { useTheme } from '@/composables/useTheme';
+
+  const attrs = useAttrs();
+  const { setTheme, getCurrentTheme } = useTheme();
+
+  import MoonIcon from '@/components/ui/Icons/MoonIcon.vue';
+  import SunIcon from '@/components/ui/Icons/SunIcon.vue';
+  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
+</script>
+
 <template>
   <div
     class="absolute right-6 top-[12.063rem] z-50"
@@ -49,19 +65,3 @@
     </InfoTooltip>
   </div>
 </template>
-
-<script lang="ts" setup>
-  import { TRANSLATIONS } from '@/constants';
-  import { THEME_TYPE } from '@/types';
-  import { POSITION_TYPES } from '@/types/index';
-  import { useAttrs } from 'vue';
-
-  import { useTheme } from '@/composables/useTheme';
-
-  const attrs = useAttrs();
-  const { setTheme, getCurrentTheme } = useTheme();
-
-  import MoonIcon from '@/components/ui/Icons/MoonIcon.vue';
-  import SunIcon from '@/components/ui/Icons/SunIcon.vue';
-  import InfoTooltip from '@/components/ui/InfoTooltip.vue';
-</script>
